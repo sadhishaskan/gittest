@@ -1,18 +1,20 @@
-on: push
-name: Test SFTP Deploy
+name: scp copy folder to remote via SSH
+
+on:
+  push
+
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2.1.0
-      with:
-        fetch-depth: 2
-    - name: FTP-Deploy-Action
-      uses: SadhishSachu/gittest@master
-      with:
-        # deploy to a folder named "sftp-deploy-test.samkirkland.com" on my server
-        ftp-server: 103.98.32.62:~/home/admin/web/gittest.pmhere.xyz/public_html/
-        ftp-username: ${{ secrets.DEVELOP_SERVER_USERNAME }}
-        ftp-password: ${{ secrets.DEVELOP_SERVER_PASSWORD }}
-        git-ftp-args: --insecure
+      - name: Copy folder content recursively to remote
+        uses: SadhishSachu/gittest@master
+        with:
+          local: master
+          remote: ~/home/admin/web/gittest.pmhere.xyz/public_html/
+          host: 103.98.32.62
+          username: root
+          password: YFTt9ws=sx9V4>%"
+        env:
+          CI: true

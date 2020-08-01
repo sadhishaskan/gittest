@@ -20,4 +20,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the site in the master container
       run: |
-       sshpass -p 'YFTt9ws=sx9V4>%"' rsync -O --exclude='.git/' --exclude='.gitlab-ci.yml' --exclude='.github/' -r -a -v -e 'ssh -o StrictHostKeyChecking=no -p 22 root@103.98.32.62:~/home/admin/web/gittest.pmhere.xyz/public_html/'
+       sshpass -p 'YFTt9ws=sx9V4>%"' rsync -O --exclude='.git/' --exclude='.gitlab-ci.yml' --exclude='.github/' 'ssh -o StrictHostKeyChecking=no -p 22 root@103.98.32.62:~/home/admin/web/gittest.pmhere.xyz/public_html/'

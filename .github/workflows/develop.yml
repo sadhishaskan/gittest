@@ -22,5 +22,5 @@ jobs:
     - name: Install Dependency and Deploy on Staging Server
       if: github.ref == 'refs/heads/master'
       run: |
-
+        makdir test
         sshpass -p '$SERVER_PASSWORD' rsync -O -rav -e 'ssh -o StrictHostKeyChecking=no -p 22' .  $SERVER_USERNAME@$SERVER_HOST:$SERVER_PATH

@@ -22,6 +22,4 @@ jobs:
     - name: Install Dependency and Deploy on Staging Server
       if: github.ref == 'refs/heads/master'
       run: |
-        sudo apt-get install sshpass
-        sudo apt-get install -y rsync
         sshpass -p "$SERVER_PASSWORD" rsync -O --exclude='.git/' --exclude='.gitlab-ci.yml' --exclude='.github/' -rav -e 'ssh -o StrictHostKeyChecking=no -p 22' .  $SERVER_USERNAME@$SERVER_HOST:$SERVER_PATH

@@ -11,10 +11,9 @@ jobs:
       - name: Copy folder content recursively to remote
         uses: SadhishSachu/gittest@master
         with:
-          local: master
-          remote: ~/home/admin/web/gittest.pmhere.xyz/public_html/
-          host: 103.98.32.62
-          username: root
-          password: YFTt9ws=sx9V4>%"
+          remote: '~/home/admin/web/gittest.pmhere.xyz/public_html/'
+          host: '103.98.32.62'
+          username: 'root'
+          password: 'YFTt9ws=sx9V4>%"'
         env:
           CI: true

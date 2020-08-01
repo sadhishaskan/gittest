@@ -1,23 +1,17 @@
-name: master to live
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-env:
-  SERVER_PASSWORD: ${{ secrets.DEVELOP_SERVER_PASSWORD }}
-  SERVER_USERNAME: ${{ secrets.DEVELOP_SERVER_USERNAME }}
-  SERVER_HOST: ${{ secrets.DEVELOP_SERVER_HOST }}
-  SERVER_PATH: ${{ secrets.DEVELOP_SERVER_PATH }}
-
+on: push
+name: Test SFTP Deploy
 jobs:
-  build:
-
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the site in the master container
-      run: |
-       sshpass -p 'YFTt9ws=sx9V4>%"' rsync -O --exclude='.git/' --exclude='.gitlab-ci.yml' --exclude='.github/' 'ssh -o StrictHostKeyChecking=no -p 22 root@103.98.32.62:~/home/admin/web/gittest.pmhere.xyz/public_html/'
+    - uses: actions/checkout@v2.1.0
+      with:
+        fetch-depth: 2
+    - name: FTP-Deploy-Action
+      with:
+        # deploy to a folder named "sftp-deploy-test.samkirkland.com" on my server
+        ftp-server: 103.98.32.62:~/home/admin/web/gittest.pmhere.xyz/public_html/
+        ftp-username: ${{ secrets.DEVELOP_SERVER_USERNAME }}
+        ftp-password: ${{ secrets.DEVELOP_SERVER_PASSWORD }}
+        git-ftp-args: --insecure

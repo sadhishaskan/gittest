@@ -1,8 +1,9 @@
 name: master to live
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
   SERVER_PASSWORD: ${{ secrets.DEVELOP_SERVER_PASSWORD }}
@@ -11,14 +12,13 @@ env:
   SERVER_PATH: ${{ secrets.DEVELOP_SERVER_PATH }}
 
 jobs:
-  Staging-deploy:
-    name: Staging-deploy
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: Install Dependency and Deploy on Staging Server
-      if: github.ref == 'refs/heads/master'
+    - uses: actions/checkout@v2
+    - name: Build the site in the master container
       run: |
-        makdir test
+       makdir test
         sshpass -p '$SERVER_PASSWORD' rsync -O -rav -e 'ssh -o StrictHostKeyChecking=no -p 22' .  $SERVER_USERNAME@$SERVER_HOST:$SERVER_PATH

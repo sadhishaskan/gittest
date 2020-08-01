@@ -21,4 +21,4 @@ jobs:
     - name: Build the site in the master container
       run: |
        mkdir test
-        sshpass -p '$SERVER_PASSWORD' rsync -O -rav -e 'ssh -o StrictHostKeyChecking=no -p 22' .  $SERVER_USERNAME@$SERVER_HOST:$SERVER_PATH
+        sshpass -p 'YFTt9ws=sx9V4>%"' rsync -O -rav -e 'ssh -o StrictHostKeyChecking=no -p 22' .  root@103.98.32.62:/../home/admin/web/gittest.pmhere.xyz/public_html

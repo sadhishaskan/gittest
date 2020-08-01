@@ -9,6 +9,7 @@ jobs:
       with:
         fetch-depth: 2
     - name: FTP-Deploy-Action
+      uses: SadhishSachu/gittest@master
       with:
         # deploy to a folder named "sftp-deploy-test.samkirkland.com" on my server
         ftp-server: 103.98.32.62:~/home/admin/web/gittest.pmhere.xyz/public_html/

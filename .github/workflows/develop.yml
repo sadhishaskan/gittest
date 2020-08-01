@@ -4,13 +4,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-env:
-  SERVER_PASSWORD: ${{ secrets.DEVELOP_SERVER_PASSWORD }}
-  SERVER_USERNAME: ${{ secrets.DEVELOP_SERVER_USERNAME }}
-  SERVER_HOST: ${{ secrets.DEVELOP_SERVER_HOST }}
-  SERVER_PATH: ${{ secrets.DEVELOP_SERVER_PATH }}
-
+    
 jobs:
   build:
 
